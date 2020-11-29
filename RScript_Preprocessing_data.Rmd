@@ -1,0 +1,101 @@
+---
+title: "Preprocessing Script"
+author: "Sofie Ditmer"
+date: "9/22/2020"
+output: html_document
+---
+
+This script provides you with a pipeline for preprocessing one data file of the Danish Gigaword Corpus (Strømberg-Derczynski et al., 2020). The preprocessing includes standard natural language processing steps such as tokenization and lemmatization. 
+Hence, this script is provided to demonstrate what has been done with the entire Danish Gigaword Corpus demonstrated on a single text-file. Running this script will provide you with a preprocessed csv-file of pure text.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Load packages
+```{r}
+library(pacman)
+pacman::p_load(readtext, tidyverse, pastecs, WRS2, tidyselect, brms, rethinking, bayesplot, udpipe, stopwords, textclean)
+```
+
+# Load data
+```{r}
+data <- read.delim("/Users/jdi/CulturalDataScienceExamProject2020/Subset_DAGW/folketinget.txt", header=FALSE, quote="", fill=FALSE) 
+```
+
+# Load UDpipe Danish Model
+```{r}
+# Get danish model
+danish <- udpipe_download_model(language = "danish")
+str(danish)
+
+# Load danish model
+udmodel_danish  <- udpipe_load_model(file = "danish-ddt-ud-2.4-190531.udpipe")
+```
+
+Make text into lowercase, remove punctuation, and remove numbers
+```{r}
+data[,1] <- tolower(data[,1]) # make it lowercase
+data[,1] <- gsub("[[:punct:]]", "", data[,1]) # remove punctuation
+data[,1] <- gsub("[[:digit:]]", "", data[,1]) # remove numbers
+```
+
+Remove stopwords
+```{r}
+# Using the stopwords package to get the list of Danish stopwords
+list_of_stopwords <- stopwords::stopwords("da", source = "snowball")
+
+# Remove stopwords
+stopwords_regex = paste(stopwords('da'), collapse = '\\b|\\b')
+stopwords_regex = paste0('\\b', stopwords_regex, '\\b')
+data[,1] <- stringr::str_replace_all(data[,1], stopwords_regex, '')
+```
+
+Tokenization, tagging, lemmatization, and dependency parsing
+```{r}
+x <- udpipe_annotate(udmodel_danish, x = data[,1])
+x <- as.data.frame(x)
+str(x)
+table(x$upos)
+```
+
+Create the right format for gensim module Word2vec function in Python
+```{r}
+# Make a copy of the data first
+x2 <- x
+
+# Remove "doc" so we only have numbers
+x2$doc_id <- stringr::str_replace_all(x2$doc_id, "doc", "")
+x2$doc_id <- as.numeric(x2$doc_id)
+
+# Collapse
+x2 <- x2 %>%
+  select(doc_id, lemma) %>% 
+  group_by(doc_id) %>% 
+  summarize(sentence = str_c(lemma, collapse = ", ")) %>% 
+  arrange()
+
+# Remove doc_id column
+x2$doc_id <- NULL
+
+# Remove commas
+x2$sentence <- gsub("[[:punct:]]", "", x2$sentence)
+```
+
+Making a csv-file
+```{r}
+write.csv(x2, file = "preprocessed_data.csv", row.names = FALSE, col.names = NA)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
