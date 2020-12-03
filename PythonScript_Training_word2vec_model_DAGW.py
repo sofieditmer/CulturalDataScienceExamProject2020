@@ -1,4 +1,4 @@
-# Instaill libraries
+# Install libraries
 ! pip install gensim
 
 # Importing libraries
