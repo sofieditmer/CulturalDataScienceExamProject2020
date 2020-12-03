@@ -1,4 +1,7 @@
-# Importing modules
+# Instaill libraries
+! pip install gensim
+
+# Importing libraries
 import gensim.models
 import gensim.models.word2vec
 import os
