@@ -20,7 +20,6 @@ I have developed a R Shiny application that enables you to explore the semantic 
 *Shiny Application: https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/RShiny_Application.R
 
 
-R SHINY APPLICATION 
-
+# PROOF OF CONCEPT 
 Click to watch the proof of concept video:
 [![Watch the video](https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/Sk%C3%A6rmbillede%202020-12-03%20kl.%2011.39.22.png)](https://youtu.be/k36jzNu2fNI)
