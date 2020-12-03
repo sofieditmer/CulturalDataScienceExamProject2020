@@ -1,7 +1,7 @@
 <p align="center" width="100%"><img width="33%" src="https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/Sk%C3%A6rmbillede%202020-12-03%20kl.%2011.45.47.png"></p>
 
 # Cultural Data Science Exam Project 2020 | Aarhus University
-￼This repository contains the contents of Sofie Ditmer's final exam project in the Cultural Data Science course at Aarhus University conducted in the fall of 2020. The main goal of this project was to contribute to the field of Danish Natural Language Processing (NLP). This was accomplished in two ways: 
+￼This repository contains the contents of the final exam project in the Cultural Data Science course at Aarhus University conducted in the fall of 2020. The main goal of this project was to contribute to the field of Danish Natural Language Processing (NLP). This was accomplished in two ways: 
 1. A neural network model was trained on the Danish Gigaword Corpus (DAGW) containing over 1 billion words. 
 2. A web-based interactive Shiny application was developed to provide the user with different tools such as exploring semantic relations between words as predicted by the model, generating a word cloud, and performing sentiment analysis. 
 
