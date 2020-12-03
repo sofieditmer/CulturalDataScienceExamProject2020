@@ -5,8 +5,7 @@ date: "9/22/2020"
 output: html_document
 ---
 
-This script provides you with a pipeline for preprocessing one data file of the Danish Gigaword Corpus (Strømberg-Derczynski et al., 2020). The preprocessing includes standard natural language processing steps such as tokenization and lemmatization. 
-Hence, this script is provided to demonstrate what has been done with the entire Danish Gigaword Corpus demonstrated on a single text-file. Running this script will provide you with a preprocessed csv-file of pure text.
+This script provides you with a pipeline for preprocessing one data file of the Danish Gigaword Corpus (Strømberg-Derczynski et al., 2020). The preprocessing includes standard natural language processing steps such as tokenization and lemmatization. Hence, this script displays what has been done with the entire Danish Gigaword Corpus demonstrated on a single text-file. Running this script will provide you with a preprocessed csv-file of pure text.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -15,15 +14,15 @@ knitr::opts_chunk$set(echo = TRUE)
 Load packages
 ```{r}
 library(pacman)
-pacman::p_load(readtext, tidyverse, pastecs, WRS2, tidyselect, brms, rethinking, bayesplot, udpipe, stopwords, textclean)
+pacman::p_load(udpipe, stopwords, dplyr)
 ```
 
 # Load data
 ```{r}
-data <- read.delim("/Users/jdi/CulturalDataScienceExamProject2020/Subset_DAGW/folketinget.txt", header=FALSE, quote="", fill=FALSE) 
+data <- read.delim("/path/to/data", header=FALSE, quote="", fill=FALSE) 
 ```
 
-# Load UDpipe Danish Model
+# Load Danish UDpipe Model for annotation
 ```{r}
 # Get danish model
 danish <- udpipe_download_model(language = "danish")
@@ -59,16 +58,16 @@ str(x)
 table(x$upos)
 ```
 
-Create the right format for gensim module Word2vec function in Python
+Create the right format (CSV-file) for later use 
 ```{r}
 # Make a copy of the data first
 x2 <- x
 
-# Remove "doc" so we only have numbers
+# Remove "doc"
 x2$doc_id <- stringr::str_replace_all(x2$doc_id, "doc", "")
 x2$doc_id <- as.numeric(x2$doc_id)
 
-# Collapse
+# Collapse columns
 x2 <- x2 %>%
   select(doc_id, lemma) %>% 
   group_by(doc_id) %>% 
@@ -82,20 +81,7 @@ x2$doc_id <- NULL
 x2$sentence <- gsub("[[:punct:]]", "", x2$sentence)
 ```
 
-Making a csv-file
+Generating a csv-file of the preprocessed data
 ```{r}
-write.csv(x2, file = "preprocessed_data.csv", row.names = FALSE, col.names = NA)
+write.csv(x2, file = "preprocessed_data.csv", row.names = FALSE)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
