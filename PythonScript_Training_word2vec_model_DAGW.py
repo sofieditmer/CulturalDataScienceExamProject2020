@@ -13,7 +13,7 @@ class MySentences(object):
              for line in open(os.path.join(self.dirname, fname), errors='ignore'): # We noticed that there are emojies and we do not want them (therefore we say errors = ignore)
                  yield utils.simple_preprocess(line)
 
-sentences = MySentences('/Users/jdi/PycharmProjects/BachelorProject/Preprocessed_Data/Files')
+sentences = MySentences('/path/to/preprocessed/data')
 model = gensim.models.Word2Vec(sentences, size = 500, window = 5, sg = 1) # sg = 1 means that it uses skipgram and not CBOW
 
 # Save model
