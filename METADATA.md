@@ -1,7 +1,4 @@
 The data in the SubsetData folder within this repository contains a subset of the Danish Gigaword Corpus. This way one can run the preprocessing script on a subset of the data and get an insight into how the word2vec model was trained on the entire corpus. If you want to run the preprocessing script (https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/RScript_Preprocessing_data.Rmd) then you have to specify the path to the subset data text files. Once you have preprocessed the data files, you can run the Python script (https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/PythonScript_Training_word2vec_model_DAGW.py) and specify a path to the preprocessed data files and train a model on this preprocessed data. 
 The Danish Gigaword Corpus (DAGW) consists of multiple sections and each section represents the source from which the data comes from. The subset of the data consists of three files from each section. The following table contains information about each section. 
 
-<p align="center" width="100%"><img width="33%" src="https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/Sk%C3%A6rmbillede%202020-12-03%20kl.%2015.15.06.png"></p>
-
-If you only wish to run the Shiny application you only have to run the prerequisites file in order to install the required packages and get the needed variables in your R environment in order to run the app successfully. 
-
+<p align="center" width="100%"><img width="100%" src="https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/Sk%C3%A6rmbillede%202020-12-03%20kl.%2015.15.06.png"></p>
