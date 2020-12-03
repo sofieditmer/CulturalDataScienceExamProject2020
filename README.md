@@ -16,7 +16,7 @@ I have trained a neural network word2vec model on the Danish Gigaword Corpus and
 # 2. R SHINY APPLICATION
 I have developed a R Shiny application that enables you to explore the semantic similarity between words as predicted by the neural network model, generate a word cloud, and perform sentiment analysis. 
 
-- Dependencies for Shiny application: https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/DEPENDENCIES.R
+- Prerequisites for Shiny application: https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/RSHINY_PREREQUISITES.R
 - Shiny Application: https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/RShiny_Application.R
 
 
