@@ -1,4 +1,4 @@
-# =================================== DEPENDENCIES =============================================== #
+# =========================== PREREQUISITES FOR RUNNING THE R SHINY APP ==================================== #
 
 # It is very important that you run this file before running the Shiny Application
 
@@ -35,6 +35,7 @@ pacman::p_load(shiny,
 
 # The following variables must be present in your R environment in order for you to be able to run the Shiny application
 # THE DAGW Model is a neural network model trained on the Danish Gigaword Corpus
+# Before you can run the following lines of code you need to download the model from the GitHub repository and make sure that the file path is correct
 DAGW_model <- read.word2vec(file = "semantic_model_DAGW_cbow.bin", normalize = TRUE)
 matrix_DAGW_model<- as.matrix(DAGW_model)
 
