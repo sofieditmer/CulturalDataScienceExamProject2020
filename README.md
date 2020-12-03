@@ -1,4 +1,4 @@
-![image](https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/Sk%C3%A6rmbillede%202020-12-03%20kl.%2011.45.47.png)
+                                      ![image](https://github.com/sofieditmer/CulturalDataScienceExamProject2020/blob/main/Sk%C3%A6rmbillede%202020-12-03%20kl.%2011.45.47.png)
 
 # Cultural Data Science Exam Project 2020 | Aarhus University
 ￼This repository contains the contents of Sofie Ditmer's final exam project in the Cultural Data Science course at Aarhus University conducted in the fall of 2020. The main goal of this project was to contribute to the field of Danish Natural Language Processing (NLP). This was accomplished in two ways: 
