@@ -1,5 +1,7 @@
 # =================================== DEPENDENCIES =============================================== #
 
+# It is very important that you run this file before running the Shiny Application
+
 install.packages("pacman")
 library(pacman)
 pacman::p_load(shiny, 
